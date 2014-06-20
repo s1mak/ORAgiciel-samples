@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff" >
+
+    <Button
+        android:id="@+id/btnDevMove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:nextFocusDown="@+id/btnDevColor"
+        android:focusableInTouchMode="true"
+        android:text="Move" />
+
+    <Button
+        android:id="@+id/btnDevColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:nextFocusUp="@+id/btnDevMove"
+        android:nextFocusDown="@+id/btnDevScreenInfo"
+        android:focusableInTouchMode="true"
+        android:text="Color" />
+
+    <Button
+        android:id="@+id/btnDevScreenInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:nextFocusUp="@+id/btnDevColor"
+        android:nextFocusDown="@+id/btnDevCapture"
+        android:focusableInTouchMode="true"
+        android:text="Screen Info" />
+
+    <Button
+        android:id="@+id/btnDevCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:focusableInTouchMode="true"
+        android:nextFocusUp="@+id/btnDevScreenInfo"
+        android:nextFocusDown="@+id/btnDevText"
+        android:text="Capture" />
+
+    <Button
+        android:id="@+id/btnDevText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:nextFocusUp="@+id/btnDevCapture"
+        android:focusableInTouchMode="true"
+        android:text="Text" />
+
+</LinearLayout>
