@@ -49,7 +49,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:nextFocusUp="@+id/btnDevCapture"
+        android:nextFocusDown="@+id/btnDevQR"
         android:focusableInTouchMode="true"
         android:text="Text" />
 
+    <Button
+        android:id="@+id/btnDevQR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:nextFocusUp="@+id/btnDevText"
+        android:focusableInTouchMode="true"
+        android:text="QR" />
 </LinearLayout>
