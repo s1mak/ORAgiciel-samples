@@ -81,7 +81,7 @@ public class DevActivity extends OraSimpleTouchActivity {
 						startActivity(intent);
 					}
 				});
-	}
+	}	
 
 	@Override
 	public void onMoveDown() {
