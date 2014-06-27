@@ -2,7 +2,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#803399FF"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:paddingLeft="20dp" >
 
     <TextView
         android:id="@+id/bcPrinterName"

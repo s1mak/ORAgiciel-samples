@@ -54,13 +54,13 @@ public class BarCodeActivity extends AbstractActivity implements QrCodeListener 
 	}
 
 	private void updateUI(Result result) {
-		if (result.getText().startsWith("printer:")) {
+		if (result.getText().startsWith("printer;")) {
 			showPrinter(result.getText());
 		}
 	}
 
 	private void showPrinter(String text) {
-		if (previousResult == null || !previousResult.startsWith("printer:")) {
+		if (previousResult == null || !previousResult.startsWith("printer;")) {
 			setContentView(R.layout.bc_printer);
 		}
 		Map<String, String> infos = extractMap(text);
@@ -82,7 +82,7 @@ public class BarCodeActivity extends AbstractActivity implements QrCodeListener 
 
 	private Map<String, String> extractMap(String text) {
 		Map<String, String> result = new HashMap<String, String>();
-		String[] infos = text.split(":");
+		String[] infos = text.split(";");
 		for (String info : infos) {
 			String[] keyValue = info.split("=");
 			if (keyValue.length == 2) {
