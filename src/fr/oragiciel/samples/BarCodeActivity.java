@@ -48,9 +48,9 @@ public class BarCodeActivity extends AbstractActivity implements QrCodeListener 
 			@Override
 			public void run() {
 				updateUI(result);
+				previousResult = result.getText();
 			}
 		});
-		previousResult = result.getText();
 	}
 
 	private void updateUI(Result result) {
@@ -64,16 +64,20 @@ public class BarCodeActivity extends AbstractActivity implements QrCodeListener 
 			setContentView(R.layout.bc_printer);
 		}
 		Map<String, String> infos = extractMap(text);
-		((TextView) findViewById(R.id.bcPrinterName)).setText("Name : "
-				+ infos.get("name"));
-		((ProgressBar) findViewById(R.id.bcPrinterProgressBarCyan))
-				.setProgress(Integer.parseInt(infos.get("c")));
-		((ProgressBar) findViewById(R.id.bcPrinterProgressBarMagenta))
-				.setProgress(Integer.parseInt(infos.get("m")));
-		((ProgressBar) findViewById(R.id.bcPrinterProgressBarYellow))
-				.setProgress(Integer.parseInt(infos.get("y")));
-		((ProgressBar) findViewById(R.id.bcPrinterProgressBarKey))
-				.setProgress(Integer.parseInt(infos.get("k")));
+		try {
+			((TextView) findViewById(R.id.bcPrinterName)).setText("Name : "
+					+ infos.get("name"));
+			((ProgressBar) findViewById(R.id.bcPrinterProgressBarCyan))
+					.setProgress(Integer.parseInt(infos.get("c")));
+			((ProgressBar) findViewById(R.id.bcPrinterProgressBarMagenta))
+					.setProgress(Integer.parseInt(infos.get("m")));
+			((ProgressBar) findViewById(R.id.bcPrinterProgressBarYellow))
+					.setProgress(Integer.parseInt(infos.get("y")));
+			((ProgressBar) findViewById(R.id.bcPrinterProgressBarKey))
+					.setProgress(Integer.parseInt(infos.get("k")));
+		} catch (Exception e) {
+
+		}
 	}
 
 	private Map<String, String> extractMap(String text) {
