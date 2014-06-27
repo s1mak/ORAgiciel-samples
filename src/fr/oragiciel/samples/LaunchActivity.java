@@ -40,6 +40,15 @@ public class LaunchActivity extends OraSimpleTouchActivity {
 				startActivity(intent);
 			}
 		});
+		
+		// Activité BarCode
+		findViewById(R.id.btnBarCode).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LaunchActivity.this, BarCodeActivity.class);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override

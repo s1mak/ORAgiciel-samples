@@ -27,7 +27,7 @@ public class DevActionActivity extends AbstractActivity {
 		setContentView(R.layout.dev_action);		
 		
 		textMove = (TextView) findViewById(R.id.textMove);
-		
+		setDoubleDoubleTouch(true);
 	}
 		
 	public void addText(String text) {

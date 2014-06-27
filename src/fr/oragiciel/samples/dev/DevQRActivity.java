@@ -13,16 +13,15 @@ import fr.oragiciel.sdk.qrcode.QrCodeListener;
 
 public class DevQRActivity extends AbstractActivity implements QrCodeListener {
 
-	private QRCodeManager qrCodeManager; 
+	private QRCodeManager qrCodeManager;
 	private boolean scan = false;
-	
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dev_qr);
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -31,7 +30,16 @@ public class DevQRActivity extends AbstractActivity implements QrCodeListener {
 	}
 
 	@Override
-	public void onQrCodeRead(Result result) {
+	public void onQrCodeRead(final Result result) {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				updateUI(result);
+			}
+		});
+	}
+
+	private void updateUI(Result result) {
 		TextView textView = (TextView) findViewById(R.id.qrText);
 		StringBuilder str = new StringBuilder();
 		str.append("format : ").append(result.getBarcodeFormat().name());
@@ -39,11 +47,12 @@ public class DevQRActivity extends AbstractActivity implements QrCodeListener {
 		str.append("\npoints : ");
 		ResultPoint[] points = result.getResultPoints();
 		for (ResultPoint resultPoint : points) {
-			str.append(resultPoint.getX()).append(",").append(resultPoint.getY()).append(" / ");
+			str.append(resultPoint.getX()).append(",")
+					.append(resultPoint.getY()).append(" / ");
 		}
 		textView.setText(str);
 	}
-	
+
 	@Override
 	public void onTouch() {
 		if (!scan) {
@@ -55,12 +64,12 @@ public class DevQRActivity extends AbstractActivity implements QrCodeListener {
 		}
 		scan = !scan;
 	}
-	
+
 	@Override
 	protected void onPause() {
 		scan = false;
 		qrCodeManager.stopScan();
 		super.onPause();
-		
+
 	}
 }

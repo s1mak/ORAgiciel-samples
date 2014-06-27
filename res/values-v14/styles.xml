@@ -9,4 +9,28 @@
         <!-- API 14 theme customizations can go here. -->
     </style>
 
+    
+	<style name="PrinterCyanProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+          <item name="android:progressDrawable">@drawable/progress_horizontal_cyan</item>
+          <item name="android:minHeight">10dip</item>
+          <item name="android:maxHeight">20dip</item>
+	</style>
+	
+	<style name="PrinterMagentaProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+          <item name="android:progressDrawable">@drawable/progress_horizontal_magenta</item>
+          <item name="android:minHeight">10dip</item>
+          <item name="android:maxHeight">20dip</item>
+	</style>
+	
+	<style name="PrinterYellowProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+          <item name="android:progressDrawable">@drawable/progress_horizontal_yellow</item>
+          <item name="android:minHeight">10dip</item>
+          <item name="android:maxHeight">20dip</item>
+	</style>
+	
+	<style name="PrinterKeyProgressBarHorizontal" parent="android:Widget.ProgressBar.Horizontal">
+          <item name="android:progressDrawable">@drawable/progress_horizontal_key</item>
+          <item name="android:minHeight">10dip</item>
+          <item name="android:maxHeight">20dip</item>
+	</style>
 </resources>

@@ -20,6 +20,15 @@
         android:gravity="center"
         android:text="Phone Test"
         android:focusableInTouchMode="true"
-        android:nextFocusUp="@+id/btnDev" />
+        android:nextFocusUp="@+id/btnDev"
+        android:nextFocusDown="@+id/btnBarCode" />
+    <Button
+        android:id="@+id/btnBarCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="BarCode Test"
+        android:focusableInTouchMode="true"
+        android:nextFocusUp="@+id/btnPhone" />
 
 </LinearLayout>
