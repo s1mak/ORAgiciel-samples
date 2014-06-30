@@ -1,11 +1,18 @@
 package fr.oragiciel.samples;
 
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.Toast;
+import fr.oragiciel.adapters.CarouselAdapter;
 import fr.oragiciel.sdk.activity.OraSimpleTouchActivity;
+import fr.oragiciel.sdk.layout.HorizontalCarouselLayout;
+import fr.oragiciel.sdk.layout.HorizontalCarouselLayout.CarouselInterface;
+import fr.oragiciel.sdk.layout.HorizontalCarouselStyle;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -14,58 +21,50 @@ import fr.oragiciel.sdk.activity.OraSimpleTouchActivity;
  * @see SystemUiHider
  */
 public class LaunchActivity extends OraSimpleTouchActivity {
+	
+	private HorizontalCarouselStyle mStyle;
+	private HorizontalCarouselLayout mCarousel;
+	private CarouselAdapter mAdapter;
+	private ArrayList<Integer> mData = new ArrayList<Integer>(0);
+	private int positionActivity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.ora_main);
 		
-		findViewById(R.id.btnDev).requestFocus();
+		mData.add(R.drawable.phone);
+		mData.add(R.drawable.devscreen);
+		mAdapter = new CarouselAdapter(this);
+		mAdapter.setData(mData);
+		mCarousel = (HorizontalCarouselLayout) findViewById(R.id.carousel_layout);
+		mStyle = new HorizontalCarouselStyle(this, HorizontalCarouselStyle.STYLE_ZOOMED_OUT);		
+		mCarousel.setStyle(mStyle);
+		mCarousel.setAdapter(mAdapter);
+
+		mCarousel.setTouchDetector(getOraTouchDetector());
 		
-		// Activité développeur : Outils de test de rendu sur le device cible
-		findViewById(R.id.btnDev).setOnClickListener(new OnClickListener() {
+		mCarousel.setOnCarouselViewChangedListener(new CarouselInterface() {
 			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(LaunchActivity.this, DevActivity.class);
-				startActivity(intent);
+			public void onItemChangedListener(View v, int position) {
+				Toast.makeText(LaunchActivity.this, "Position " + String.valueOf(position), Toast.LENGTH_SHORT).show();
+				positionActivity = position;
 			}
 		});
 		
-		// Activité Phone
-		findViewById(R.id.btnPhone).setOnClickListener(new OnClickListener() {
+		mCarousel.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(LaunchActivity.this, PhoneActivity.class);
-				startActivity(intent);
+				Log.d("toto", "Touch!");
+				if (positionActivity == 0) {
+					Intent intent = new Intent(LaunchActivity.this, PhoneActivity.class);
+					startActivity(intent);
+				} else if (positionActivity == 1) {
+					Intent intent = new Intent(LaunchActivity.this, DevActivity.class);
+					startActivity(intent);
+				}
 			}
 		});
-	}
-	
-	@Override
-	public void onDoubleTouch() {
-		finish();
-	}
-
-	@Override
-	public void onTouch() {
-		if (getCurrentFocus() instanceof Button) {
-			((Button) getCurrentFocus()).callOnClick();
-		}
-	}
-
-	@Override
-	public void onMoveUp() {
-		if (getCurrentFocus().getNextFocusUpId() != View.NO_ID) {
-			findViewById(getCurrentFocus().getNextFocusUpId()).requestFocus();
-		}
-	}
-
-	@Override
-	public void onMoveDown() {
-		if (getCurrentFocus().getNextFocusDownId() != View.NO_ID) {
-			findViewById(getCurrentFocus().getNextFocusDownId()).requestFocus();
-		}
 	}
 		
 }

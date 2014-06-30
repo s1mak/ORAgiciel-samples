@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.oragiciel.samples"
     android:versionCode="1"
@@ -6,43 +7,35 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="17" />
-    
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <activity
             android:name="fr.oragiciel.samples.LaunchActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity 
-            android:name="fr.oragiciel.samples.PhoneActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.DevActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.dev.DevActionActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.dev.DevCaptureActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.dev.DevColorActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.dev.DevScreenInfoActivity">
-        </activity>
-        <activity 
-            android:name="fr.oragiciel.samples.dev.DevTextActivity">
-        </activity>
+        <activity android:name="fr.oragiciel.samples.PhoneActivity" />
+        <activity android:name="fr.oragiciel.samples.DevActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevActionActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevCaptureActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevColorActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevScreenInfoActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevTextActivity" />
+        <activity android:name="fr.oragiciel.samples.dev.DevQRActivity" />
+        <activity android:name="fr.oragiciel.samples.BarCodeActivity" />
     </application>
 
 </manifest>

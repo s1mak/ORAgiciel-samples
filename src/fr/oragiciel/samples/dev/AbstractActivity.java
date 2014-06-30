@@ -4,14 +4,25 @@ import fr.oragiciel.sdk.activity.OraSimpleTouchActivity;
 
 public class AbstractActivity extends OraSimpleTouchActivity {
 
-	long doubleTouchTime = -1;
-	
+	private long doubleTouchTime = -1;
+	private boolean doubleDoubleTouch = false;
+
 	@Override
 	public void onDoubleTouch() {
-		long time = System.currentTimeMillis();
-		if (time - doubleTouchTime < 1000) {
+		if (doubleDoubleTouch) {
+			long time = System.currentTimeMillis();
+			if (time - doubleTouchTime < 1000) {
+				finish();
+			}
+			doubleTouchTime = time;
+		} else {
 			finish();
 		}
-		doubleTouchTime = time;
 	}
+
+	protected void setDoubleDoubleTouch(boolean doubleDoubleTouch) {
+		this.doubleDoubleTouch = doubleDoubleTouch;
+	}
+	
+	
 }

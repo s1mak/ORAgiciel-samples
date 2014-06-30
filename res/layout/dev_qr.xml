@@ -1,26 +1,19 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.orasgiciel.samples.CaptureActivity"
-    tools:ignore="MergeRootFrame" >
-
-    <SurfaceView
-        android:id="@+id/surfaceView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    android:background="#aa00427F"
+    tools:context="${packageName}.${activityClass}" >
 
     <TextView
-        android:id="@+id/devCaptureText"
+        android:id="@+id/qrText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="50dp"
-        android:text=""
+        android:text="Scan"
         android:textSize="30dp"
         android:textColor="#ffffff" />
-    
-</FrameLayout>
 
+</RelativeLayout>

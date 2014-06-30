@@ -9,6 +9,7 @@ import android.widget.ListView;
 import fr.oragiciel.samples.dev.DevActionActivity;
 import fr.oragiciel.samples.dev.DevCaptureActivity;
 import fr.oragiciel.samples.dev.DevColorActivity;
+import fr.oragiciel.samples.dev.DevQRActivity;
 import fr.oragiciel.samples.dev.DevScreenInfoActivity;
 import fr.oragiciel.samples.dev.DevTextActivity;
 import fr.oragiciel.sdk.activity.OraSimpleTouchActivity;
@@ -70,7 +71,17 @@ public class DevActivity extends OraSimpleTouchActivity {
 						startActivity(intent);
 					}
 				});
-	}
+
+		findViewById(R.id.btnDevQR).setOnClickListener(
+				new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(DevActivity.this,
+								DevQRActivity.class);
+						startActivity(intent);
+					}
+				});
+	}	
 
 	@Override
 	public void onMoveDown() {
