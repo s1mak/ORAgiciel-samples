@@ -62,6 +62,9 @@ public class LaunchActivity extends OraSimpleTouchActivity {
 				} else if (positionActivity == 1) {
 					Intent intent = new Intent(LaunchActivity.this, DevActivity.class);
 					startActivity(intent);
+				} else if (positionActivity == 2) {
+					Intent intent = new Intent(LaunchActivity.this, BarCodeActivity.class);
+					startActivity(intent);
 				}
 			}
 		});
